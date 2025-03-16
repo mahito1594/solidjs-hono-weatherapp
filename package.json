@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.13.8",
+    "@solidjs/router": "^0.15.3",
     "hono": "^4.7.4",
     "solid-js": "^1.9.5"
   },

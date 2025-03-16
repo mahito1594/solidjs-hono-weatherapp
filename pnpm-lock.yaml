@@ -11,6 +11,9 @@ importers:
       '@hono/node-server':
         specifier: ^1.13.8
         version: 1.13.8(hono@4.7.4)
+      '@solidjs/router':
+        specifier: ^0.15.3
+        version: 0.15.3(solid-js@1.9.5)
       hono:
         specifier: ^4.7.4
         version: 4.7.4
@@ -407,6 +410,11 @@ packages:
     resolution: {integrity: sha512-PIQeY5XDkrOysbQblSW7v3l1MDZzkTEzAfTPkj5VAu3FW8fS4ynyLg2sINp0fp3SjZ8xkRYpLqoKcYqAkhU1dw==}
     cpu: [x64]
     os: [win32]
+
+  '@solidjs/router@0.15.3':
+    resolution: {integrity: sha512-iEbW8UKok2Oio7o6Y4VTzLj+KFCmQPGEpm1fS3xixwFBdclFVBvaQVeibl1jys4cujfAK5Kn6+uG2uBm3lxOMw==}
+    peerDependencies:
+      solid-js: ^1.8.6
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -948,6 +956,10 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.35.0':
     optional: true
+
+  '@solidjs/router@0.15.3(solid-js@1.9.5)':
+    dependencies:
+      solid-js: 1.9.5
 
   '@types/babel__core@7.20.5':
     dependencies:
