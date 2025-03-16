@@ -3,6 +3,10 @@ import { serveStatic } from '@hono/node-server/serve-static';
 
 const app = new Hono()
 
+app.get("/api/clock", (c) => {
+  return c.json({ time: new Date().toLocaleTimeString() });
+})
+
 app.use("/build/*", serveStatic({ root: "./dist/" }));
 
 app.get("*", (c) => {
