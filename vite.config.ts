@@ -1,7 +1,7 @@
-import { defineConfig } from "vite";
 import build from "@hono/vite-build/node";
 import devServer from "@hono/vite-dev-server";
 import nodeAdapter from "@hono/vite-dev-server/node";
+import { defineConfig } from "vite";
 import solid from "vite-plugin-solid";
 
 export default defineConfig(({ mode }) => {
@@ -22,13 +22,13 @@ export default defineConfig(({ mode }) => {
         // emptyOutDir: false,
         copyPublicDir: false,
       },
-      plugins: [solid()]
-    }
+      plugins: [solid()],
+    };
   }
 
   return {
     ssr: {
-      external: ["solid-js"]
+      external: ["solid-js"],
     },
     plugins: [
       solid({ ssr: true }),
@@ -38,7 +38,7 @@ export default defineConfig(({ mode }) => {
       devServer({
         entry: "src/index.tsx",
         adapter: nodeAdapter,
-      })
-    ]
+      }),
+    ],
   };
 });

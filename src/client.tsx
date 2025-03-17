@@ -1,7 +1,7 @@
 /* @refresh reload */
-import { render } from "solid-js/web";
 import { Route, Router } from "@solidjs/router";
 import { lazy } from "solid-js";
+import { render } from "solid-js/web";
 
 const Home = lazy(() => import("./routes/Home"));
 const Counter = lazy(() => import("./routes/Counter"));
@@ -13,7 +13,8 @@ const App = () => (
     <Route path="/counter" component={Counter} />
     <Route path="/clock" component={Clock} />
   </Router>
-)
+);
 
+// biome-ignore lint/style/noNonNullAssertion: assume root element exists
 const root = document.getElementById("root")!;
 render(() => <App />, root);

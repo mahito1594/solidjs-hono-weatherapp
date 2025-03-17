@@ -1,18 +1,24 @@
-import { createResource, Suspense } from "solid-js";
+import { Suspense, createResource } from "solid-js";
 
 const Clock = () => {
   const [data, { refetch }] = createResource<string>(async () => {
     const response = await fetch("/api/clock");
     const data = await response.json();
-    const headers = Array.from(response.headers)
-      .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
-    return JSON.stringify({
-      url: response.url,
-      status: response.status,
-      headers,
-      body: data,
-    }, null, 2);
-  })
+    const headers = Array.from(response.headers).reduce<Record<string, string>>((acc, [key, value]) => {
+      acc[key] = value;
+      return acc;
+    }, {});
+    return JSON.stringify(
+      {
+        url: response.url,
+        status: response.status,
+        headers,
+        body: data,
+      },
+      null,
+      2,
+    );
+  });
 
   return (
     <>
@@ -26,7 +32,7 @@ const Clock = () => {
         </Suspense>
       </div>
     </>
-  )
+  );
 };
 
 export default Clock;
