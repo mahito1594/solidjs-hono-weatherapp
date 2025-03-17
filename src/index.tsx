@@ -18,7 +18,10 @@ app.get("*", (c) => {
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {import.meta.env.PROD ? (
-          <script type="module" src="/build/client.js" />
+          <>
+            <link rel="stylesheet" href="/build/index.css" />
+            <script type="module" src="/build/client.js" />
+          </>
         ) : (
           <script type="module" src="/src/client.tsx" />
         )}

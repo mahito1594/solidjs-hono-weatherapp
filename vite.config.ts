@@ -3,6 +3,7 @@ import devServer from "@hono/vite-dev-server";
 import nodeAdapter from "@hono/vite-dev-server/node";
 import { defineConfig } from "vite";
 import solid from "vite-plugin-solid";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig(({ mode }) => {
   if (mode === "client") {
@@ -16,13 +17,18 @@ export default defineConfig(({ mode }) => {
           output: {
             entryFileNames: "build/client.js",
             chunkFileNames: "build/[name]-[hash].js",
-            assetFileNames: "build/[name]-[hash].[ext]",
+            assetFileNames: ({ names }) => {
+              if (names[0]?.endsWith(".css")) {
+                return "build/index.css";
+              }
+              return "build/[name]-[hash][extname]";
+            },
           },
         },
         // emptyOutDir: false,
         copyPublicDir: false,
       },
-      plugins: [solid()],
+      plugins: [tailwindcss(), solid()],
     };
   }
 

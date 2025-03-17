@@ -2,6 +2,7 @@
 import { Route, Router } from "@solidjs/router";
 import { lazy } from "solid-js";
 import { render } from "solid-js/web";
+import "./index.css";
 
 const Home = lazy(() => import("./routes/Home"));
 const Counter = lazy(() => import("./routes/Counter"));
