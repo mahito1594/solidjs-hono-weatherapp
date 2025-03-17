@@ -11,6 +11,8 @@
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
     "types": ["vite/client"],
 
     /* Linting */
@@ -20,5 +22,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["vite.config.ts", "src/index.ts"]
+  "include": ["vite.config.ts", "src/index.tsx"]
 }

@@ -27,13 +27,16 @@ export default defineConfig(({ mode }) => {
   }
 
   return {
+    ssr: {
+      external: ["solid-js"]
+    },
     plugins: [
       solid({ ssr: true }),
       build({
-        entry: "src/index.ts",
+        entry: "src/index.tsx",
       }),
       devServer({
-        entry: "src/index.ts",
+        entry: "src/index.tsx",
         adapter: nodeAdapter,
       })
     ]
