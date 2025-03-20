@@ -1,4 +1,6 @@
+import { css } from "@styled-system/css";
 import { Suspense, createResource } from "solid-js";
+import { buttonStyle } from "../styles/button";
 
 const Clock = () => {
   const [data, { refetch }] = createResource<string>(async () => {
@@ -22,13 +24,13 @@ const Clock = () => {
 
   return (
     <>
-      <h1>Hono and SolidJS: Clock</h1>
-      <div>
-        <button type="button" onClick={() => refetch()}>
+      <h2 class={css({ fontSize: "xl" })}>Clock</h2>
+      <div class={css({ mt: "4" })}>
+        <button type="button" class={buttonStyle()} onClick={() => refetch()}>
           Get Server Time
         </button>
         <Suspense fallback={<p>Loading...</p>}>
-          <pre>{data()}</pre>
+          <pre class={css({ bg: "gainsboro", mt: "4" })}>{data()}</pre>
         </Suspense>
       </div>
     </>

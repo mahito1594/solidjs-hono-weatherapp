@@ -3,7 +3,6 @@ import { A } from "@solidjs/router";
 const Home = () => {
   return (
     <>
-      <h1 class="text-xl">Hono and SolidJS</h1>
       <div>
         <ul>
           <li>

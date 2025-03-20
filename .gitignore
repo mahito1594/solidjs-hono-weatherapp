@@ -31,3 +31,7 @@ lerna-debug.log*
 
 # artifacts
 dist/
+
+## Panda
+styled-system
+styled-system-studio
