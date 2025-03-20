@@ -2,7 +2,9 @@
   "name": "solidjs-hono-weatherapp",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev:server": "vite",
+    "dev:client": "vite --mode client --open",
+    "dev": "pnpm run \"/^dev:*./\"",
     "build": "vite build --mode client && vite build",
     "start": "node dist/index.js",
     "check": "biome check",

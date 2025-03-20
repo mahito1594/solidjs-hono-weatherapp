@@ -1,50 +1,44 @@
 import build from "@hono/vite-build/node";
 import devServer from "@hono/vite-dev-server";
 import nodeAdapter from "@hono/vite-dev-server/node";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import solid from "vite-plugin-solid";
-import tailwindcss from "@tailwindcss/vite";
+
+const API_SERVER_PORT = 3000;
 
 export default defineConfig(({ mode }) => {
   if (mode === "client") {
     return {
+      root: "client",
+      plugins: [tailwindcss(), solid()],
+      server: {
+        proxy: {
+          "/api": `http://localhost:${API_SERVER_PORT}`,
+        },
+      },
+      build: {
+        outDir: "../dist/static",
+        emptyOutDir: true,
+      },
       esbuild: {
         jsxImportSource: "solid-js",
       },
-      build: {
-        rollupOptions: {
-          input: "src/client.tsx",
-          output: {
-            entryFileNames: "build/client.js",
-            chunkFileNames: "build/[name]-[hash].js",
-            assetFileNames: ({ names }) => {
-              if (names[0]?.endsWith(".css")) {
-                return "build/index.css";
-              }
-              return "build/[name]-[hash][extname]";
-            },
-          },
-        },
-        // emptyOutDir: false,
-        copyPublicDir: false,
-      },
-      plugins: [tailwindcss(), solid()],
     };
   }
 
   return {
-    ssr: {
-      external: ["solid-js"],
-    },
     plugins: [
-      solid({ ssr: true }),
       build({
-        entry: "src/index.tsx",
+        entry: "server/index.ts",
       }),
       devServer({
-        entry: "src/index.tsx",
+        entry: "server/index.ts",
         adapter: nodeAdapter,
       }),
     ],
+    server: {
+      port: API_SERVER_PORT,
+    },
   };
 });
