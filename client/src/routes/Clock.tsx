@@ -1,10 +1,14 @@
+import type { AppType } from "@server/index";
 import { css } from "@styled-system/css";
+import { hc } from "hono/client";
 import { Suspense, createResource } from "solid-js";
 import { buttonStyle } from "../styles/button";
 
+const client = hc<AppType>("/");
+
 const Clock = () => {
   const [data, { refetch }] = createResource<string>(async () => {
-    const response = await fetch("/api/clock");
+    const response = await client.api.clock.$get();
     const data = await response.json();
     const headers = Array.from(response.headers).reduce<Record<string, string>>((acc, [key, value]) => {
       acc[key] = value;
