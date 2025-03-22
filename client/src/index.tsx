@@ -17,7 +17,7 @@ const Layout: ParentComponent = (props) => (
   <>
     <header class={css({ py: "4" })}>
       <h1 class={css({ fontSize: "2xl", textAlign: "center" })}>
-        <A href="/">Hono & SolidJS</A>
+        <A href="/">Weather App</A>
       </h1>
     </header>
     <main class={container({ maxW: "breakpoint-md" })}>{props.children}</main>
