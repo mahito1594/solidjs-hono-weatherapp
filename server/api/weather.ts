@@ -23,14 +23,14 @@ const CurrentWeather = v.object({
 const weatherApp = new Hono().get(
   "/:city",
   validator("param", (value, c) => {
-    const result = cityNames.includes(value.city);
+    const result = cityNames.includes(value.city.toLowerCase());
     if (!result) {
       return c.text("City not found", 404);
     }
     return value;
   }),
   async (c) => {
-    const city = cities.find((city) => city.name.toLowerCase() === c.req.param("city"));
+    const city = cities.find((city) => city.name.toLowerCase() === c.req.param("city").toLowerCase());
     const endpoint = new URL(env.API_ENDPOINT_CURRENTWEATHER, env.API_BASEURL);
     const res = await fetch(`${endpoint}?lat=${city?.latitude}&lon=${city?.latitude}&appid=${env.API_KEY}`);
 
