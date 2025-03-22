@@ -4,8 +4,7 @@ import * as v from "valibot";
 import cities from "../data/cities.json";
 import { env } from "../env";
 
-const cityNames = cities.map((city) => city.name.toLocaleLowerCase());
-const CityName = v.pipe(v.string(), v.toLowerCase(), v.picklist(cityNames));
+const cityNames = cities.map((city) => city.name.toLowerCase());
 
 const CurrentWeather = v.object({
   weather: v.array(
@@ -24,11 +23,11 @@ const CurrentWeather = v.object({
 const weatherApp = new Hono().get(
   "/:city",
   validator("param", (value, c) => {
-    const result = v.safeParse(CityName, value.city);
-    if (!result.success) {
-      return c.text("No such city", 404);
+    const result = cityNames.includes(value.city);
+    if (!result) {
+      return c.text("City not found", 404);
     }
-    return result.output;
+    return value;
   }),
   async (c) => {
     const city = cities.find((city) => city.name.toLowerCase() === c.req.param("city"));
