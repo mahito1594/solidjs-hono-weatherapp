@@ -11,7 +11,6 @@ import { getWeather } from "./queries/weather";
 const Home = lazy(() => import("./routes/Home"));
 const Weather = lazy(() => import("./routes/Weather"));
 const Counter = lazy(() => import("./routes/Counter"));
-const Clock = lazy(() => import("./routes/Clock"));
 const NotFound = lazy(() => import("./routes/NotFound"));
 
 const Layout: ParentComponent = (props) => (
