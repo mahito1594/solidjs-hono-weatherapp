@@ -9,13 +9,17 @@
     "build": "vite build --mode client && vite build",
     "start": "node dist/index.js",
     "check": "biome check",
-    "check:fix": "biome check --fix"
+    "check:fix": "biome check --fix",
+    "type-check": "tsc --build"
   },
   "dependencies": {
+    "@dotenvx/dotenvx": "^1.39.0",
     "@hono/node-server": "^1.13.8",
     "@solidjs/router": "^0.15.3",
+    "@t3-oss/env-core": "^0.12.0",
     "hono": "^4.7.4",
-    "solid-js": "^1.9.5"
+    "solid-js": "^1.9.5",
+    "valibot": "^1.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",

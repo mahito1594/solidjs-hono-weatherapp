@@ -24,6 +24,11 @@ export default defineConfig(({ mode }) => {
       esbuild: {
         jsxImportSource: "solid-js",
       },
+      environments: {
+        ssr: {
+          keepProcessEnv: false,
+        },
+      },
     };
   }
 
@@ -39,6 +44,11 @@ export default defineConfig(({ mode }) => {
     ],
     server: {
       port: API_SERVER_PORT,
+    },
+    environments: {
+      ssr: {
+        keepProcessEnv: true,
+      },
     },
   };
 });

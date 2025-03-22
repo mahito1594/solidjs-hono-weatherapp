@@ -1,0 +1,7 @@
+[
+  { "name": "Sapporo", "country": "JP", "latitude": 43.061936, "longtitude": 141.3542924 },
+  { "name": "Sendai", "country": "JP", "latitude": 38.2677554, "longtitude": 140.8691498 },
+  { "name": "Saitama", "country": "JP", "latitude": 35.8616402, "longtitude": 139.6457957 },
+  { "name": "Chiba", "country": "JP", "latitude": 35.609985, "longtitude": 140.118126 },
+  { "name": "Tokyo", "country": "JP", "latitude": 35.6828387, "longtitude": 139.7594549 }
+]

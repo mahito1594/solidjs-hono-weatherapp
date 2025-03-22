@@ -5,8 +5,11 @@ import { render } from "solid-js/web";
 import "./index.css";
 import { css } from "@styled-system/css";
 import { container } from "@styled-system/patterns";
+import { getCities } from "./queries/city";
+import { getWeather } from "./queries/weather";
 
 const Home = lazy(() => import("./routes/Home"));
+const Weather = lazy(() => import("./routes/Weather"));
 const Counter = lazy(() => import("./routes/Counter"));
 const Clock = lazy(() => import("./routes/Clock"));
 const NotFound = lazy(() => import("./routes/NotFound"));
@@ -27,7 +30,8 @@ const Layout: ParentComponent = (props) => (
 
 const App = () => (
   <Router root={Layout}>
-    <Route path="/" component={Home} />
+    <Route path="/" component={Home} preload={() => getCities()} />
+    <Route path="/weather/:city" component={Weather} preload={({ params }) => getWeather(params.city)} />
     <Route path="/counter" component={Counter} />
     <Route path="/clock" component={Clock} />
     <Route path="*404" component={NotFound} />
