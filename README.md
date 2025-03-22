@@ -1,5 +1,10 @@
 # Hono + SolidJS + Vite / Node.js
 
+## Prerequest
+
+Download your own Weather API key from [OpenWeather](https://openweathermap.org/), and put it on `.env`.
+See [.env.example](./.env.example) and [env.ts](./server/env.ts).
+
 ## Development
 
 ```bash
